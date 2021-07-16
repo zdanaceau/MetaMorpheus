@@ -303,6 +303,7 @@ namespace MetaMorpheusGUI
             WriteDecoyCheckBox.IsChecked = task.SearchParameters.WriteDecoys;
             WriteContaminantCheckBox.IsChecked = task.SearchParameters.WriteContaminants;
             WriteIndividualResultsCheckBox.IsChecked = task.SearchParameters.WriteIndividualFiles;
+            WriteSpectralLibraryCheckBox.IsChecked = task.SearchParameters.WriteSpectralLibrary;
             CompressIndividualResultsCheckBox.IsChecked = task.SearchParameters.CompressIndividualFiles;
             IncludeMotifInModNamesCheckBox.IsChecked = task.SearchParameters.IncludeModMotifInMzid;
 
@@ -495,13 +496,13 @@ namespace MetaMorpheusGUI
             }
 
             double? minimumAllowedIntensityRatioToBasePeak = null;
-            if (double.TryParse(MinimumAllowedIntensityRatioToBasePeakTexBox.Text, out double minimumAllowedIntensityRatio))
+            if (double.TryParse(MinimumAllowedIntensityRatioToBasePeakTexBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double minimumAllowedIntensityRatio))
             {
                 minimumAllowedIntensityRatioToBasePeak = minimumAllowedIntensityRatio;
             }
 
             double? windowWidthThompsons = null;
-            if (double.TryParse(WindowWidthThomsonsTextBox.Text, out double windowWidth))
+            if (double.TryParse(WindowWidthThomsonsTextBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double windowWidth))
             {
                 windowWidthThompsons = windowWidth;
             }
@@ -577,6 +578,7 @@ namespace MetaMorpheusGUI
             TheTask.SearchParameters.WriteDecoys = WriteDecoyCheckBox.IsChecked.Value;
             TheTask.SearchParameters.WriteContaminants = WriteContaminantCheckBox.IsChecked.Value;
             TheTask.SearchParameters.WriteIndividualFiles = WriteIndividualResultsCheckBox.IsChecked.Value;
+            TheTask.SearchParameters.WriteSpectralLibrary = WriteSpectralLibraryCheckBox.IsChecked.Value;
             TheTask.SearchParameters.CompressIndividualFiles = CompressIndividualResultsCheckBox.IsChecked.Value;
             TheTask.SearchParameters.IncludeModMotifInMzid = IncludeMotifInModNamesCheckBox.IsChecked.Value;
 
